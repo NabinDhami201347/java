@@ -8,8 +8,6 @@ import java.util.Stack;
 public class ScientificCalculator extends JFrame {
     private JTextField expressionField; // Field for the expression
     private JTextField resultField; // Field for the result
-    private double result = 0; // To store the intermediate result
-    private boolean isCalculated = false;
     private boolean showingResult = false;
 
     public ScientificCalculator() {
@@ -32,7 +30,7 @@ public class ScientificCalculator extends JFrame {
         resultField.setFont(new Font("Arial", Font.PLAIN, 24));
         resultField.setBackground(Color.BLACK);
         resultField.setForeground(Color.WHITE);
-        resultField.setBorder(new EmptyBorder(0, 400, 0, 0)); // Set border to zero
+        resultField.setBorder(new EmptyBorder(0, 350, 0, 0)); // Set border to zero
         resultField.setPreferredSize(new Dimension(450, 35));
         resultField.setMargin(new Insets(0, 0, 0, 0));
 
@@ -127,7 +125,6 @@ public class ScientificCalculator extends JFrame {
     private void clearDisplay() {
         expressionField.setText("");
         resultField.setText("");
-        result = 0;
     }
 
     private void clearOne() {
@@ -141,8 +138,6 @@ public class ScientificCalculator extends JFrame {
         String expression = expressionField.getText();
         double calculatedResult = evaluateExpression(expression);
         resultField.setText(String.valueOf(calculatedResult));
-        result = calculatedResult;
-        isCalculated = true;
         showingResult = true;
     }
 
@@ -281,6 +276,6 @@ public class ScientificCalculator extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(ScientificCalculator::new);
+        new ScientificCalculator();
     }
 }

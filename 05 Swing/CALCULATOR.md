@@ -1,12 +1,24 @@
+```java
+JPanel buttonPanel = new JPanel();
+buttonPanel.setLayout(new GridLayout(4, 4, 5, 5));
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+String[] buttonLabels = {
+    "7", "8", "9", "/",
+    "4", "5", "6", "*",
+    "1", "2", "3", "-",
+    "0", ".", "=", "+"
+};
 
-public class Calc extends JFrame {
+for (String label : buttonLabels) {
+    JButton button = new JButton(label);
+    button.setFont(new Font("Arial", Font.BOLD, 20));
+    buttonPanel.add(button);
+}
+
+add(buttonPanel);
+```
+
+```java
     public Calc() {
         super("Calculator");
 
@@ -53,18 +65,4 @@ public class Calc extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
-    // Evaluate an arithmetic expression and return the result
-    private double evaluateExpression(String expression) throws ScriptException {
-        // Create a JavaScript engine
-        ScriptEngineManager manager = new ScriptEngineManager();
-        ScriptEngine engine = manager.getEngineByName("JavaScript");
-
-        // Evaluate the expression and return the result as a double
-        return (double) engine.eval(expression);
-    }
-
-    public static void main(String[] args) {
-        new Calc();
-    }
-}
+```
